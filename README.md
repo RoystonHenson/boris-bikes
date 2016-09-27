@@ -1,4 +1,3 @@
 ##Boris Bikes!
 
-![boris bikes](http://i.dailymail.co.uk/i/pix/2011/07/29/article-0-0D32B8DB00000578-203_634x665.jpg)
-
+![boris bikes](https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQgsqdWO_1L7nkzvHjfMzCGZ4a4GQIoyRT2cuOxXdqTFE3twoE4vA)
