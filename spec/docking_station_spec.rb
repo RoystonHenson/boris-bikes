@@ -9,4 +9,10 @@ describe DockingStation do
   it {expect(docking_station).to respond_to (:dock_bike)}
   it {expect(docking_station.dock_bike).to be_instance_of (Bike)}
   it {expect(docking_station).to respond_to (:bike)}
+
+end
+
+describe DockingStation do
+  let(:docking_station) {DockingStation.new}
+  it {expect{:release_bike}.to raise_error("Error")}
 end

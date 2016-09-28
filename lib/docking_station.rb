@@ -1,16 +1,23 @@
 #require "bike"
 
 class DockingStation
-  attr_reader :bike
+attr_reader :bike
+
+#def initialize
+  #@@boris = []
+#end
 
   def release_bike
-     bike = Bike.new
-  end
+    if @bike == 0
+    else
+      raise "Error"
+    end
+    end
 
   def dock_bike
-    @bike= Bike.new
+  bike = Bike.new
+
 
   end
-
 
 end
