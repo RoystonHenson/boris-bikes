@@ -1,5 +1,6 @@
 require 'docking_station'
 
 describe DockingStation do
-it {expect(docking_station).to respond to (release_bike)}
+  let(:docking_station) {DockingStation.new}
+it {expect(docking_station).to respond_to (:release_bike)}
 end
