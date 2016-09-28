@@ -3,11 +3,14 @@ ___
 
 **Type of error:**
 
-```NameError```
+```
+NameError
+```
 
 **Filepath of error:**
-
-```/Users/roystonHenson/.rvm/rubies/ruby-2.3.0/bin/irb```
+```
+/Users/roystonHenson/.rvm/rubies/ruby-2.3.0/bin/irb
+```
 
 **Number line of error:**
 
