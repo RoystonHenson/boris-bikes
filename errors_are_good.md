@@ -1,23 +1,23 @@
 ##Errors are Good
+___
 
-
-###Type of error:
+**Type of error:**
 
 ```NameError```
 
-###Filepath of error:
+**Filepath of error:**
 
 ```/Users/roystonHenson/.rvm/rubies/ruby-2.3.0/bin/irb```
 
-###Number line of error:
+**Number line of error:**
 
 ```Line 11```
 
-###Ruby docs explanation of error:
+**Ruby docs explanation of error:**
 
 ```Raised when a given name is invalid or undefined```
 
-###A solution to the error:
+**A solution to the error:**
 
 Code before 
 
