@@ -2,14 +2,14 @@
 require_relative "bike"
 
 class DockingStation
-  #attr_reader :bike
+  attr_reader :bike
 
-  def initialize(bike = [])
+  def initialize(bike=[])
     @bike = bike
   end
 
   def release_bike
-    fail "no bikes available" unless @bike.not_empty?
+    fail "no bikes available" unless @bike.any?
     @bike.pop
 
   end
