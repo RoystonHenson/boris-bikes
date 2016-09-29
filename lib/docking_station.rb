@@ -1,4 +1,4 @@
-#testing makersinit
+
 require_relative "bike"
 
 class DockingStation
@@ -9,16 +9,23 @@ class DockingStation
   end
 
   def release_bike
-    fail "no bikes available" unless @bike.any?
+    fail "no bikes available" if empty?
     @bike.pop
 
   end
 
   def dock_bike(bike)
-    fail "Sorry! The dock is full!" if @bike.length >= 20
+    fail "Sorry! The dock is full!" if full?
     @bike << bike
-
-
   end
 
+  private
+
+  def full?
+    return true if @bike.length >= 20
+  end
+
+  def empty?
+    return true if @bike.empty?
+  end
 end
