@@ -1,6 +1,5 @@
 require "bike"
 
 describe Bike do
-  let(:bike) {Bike.new}
-  it {expect(bike).to respond_to (:working?)}
+  it { is_expected.to respond_to (:working?)}
 end

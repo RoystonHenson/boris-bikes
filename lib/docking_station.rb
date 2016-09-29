@@ -8,13 +8,12 @@ attr_reader :bike
 #end
 
   def release_bike
-    fail "Error" unless @bike
-      @bike
-    end
+    fail ("no bikes available") unless @bike
+    @bike
+  end
 
   def dock_bike(bike)
     @bike = bike
-
   end
 
 end

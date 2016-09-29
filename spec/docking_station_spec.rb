@@ -1,18 +1,32 @@
 require 'docking_station'
 
 describe DockingStation do
-  let(:docking_station) {DockingStation.new}
-  let(:bike) {Bike.new}
-  it {expect(docking_station).to respond_to (:release_bike)}
-  it {expect(docking_station.release_bike).to be_instance_of(Bike)}
-  it {expect(bike.working?).to be true}
-  it {expect(docking_station).to respond_to(:dock_bike).with(1).argument}
-  it {expect(docking_station.dock_bike).to be_instance_of (Bike)}
-  it {expect(docking_station).to respond_to (:bike)}
+  it { is_expected.to respond_to (:release_bike) }
 
-end
+  it "releases bike" do
+    bike = Bike.new
+    subject.dock_bike(bike)
+    expect(subject.release_bike).to eq bike
+    expect(bike).to be_working
+  end
 
-describe DockingStation do
-  let(:docking_station) {DockingStation.new}
-  it {expect{docking_station.release_bike}.to raise_error("Error")}
+  it { is_expected.to respond_to(:dock_bike).with(1).argument }
+
+  it {is_expected.to respond_to(:bike) }
+
+  it "docks bike" do
+    bike = Bike.new
+    expect(subject.dock_bike(bike)).to eq bike
+  end
+
+  it "return docked bike" do
+    bike = Bike.new
+    subject.dock_bike(bike)
+    expect(subject.bike).to eq bike
+  end
+
+  it "raises error when no bikes" do
+    expect{subject.release_bike}.to raise_error("no bikes available")
+  end
+
 end
