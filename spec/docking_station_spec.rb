@@ -14,4 +14,13 @@ describe DockingStation do
       expect(bike).to be_working
     end
   end
+
+  describe '#dock_bike' do
+    let(:bike) { Bike.new }
+
+    it 'docks a bike' do
+      ds.dock_bike(bike)
+      expect(ds.bikes).to eq([bike])
+    end
+  end
 end
