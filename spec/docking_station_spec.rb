@@ -4,14 +4,24 @@ describe DockingStation do
   let(:ds) { DockingStation.new }
   
   describe '#release_bike' do
-    it 'releases a bike' do
-      expect(ds).to respond_to(:release_bike)
+    let(:bike) { Bike.new }
+
+    context 'when working bikes are available' do
+      it 'releases a bike' do
+        expect(ds).to respond_to(:release_bike)
+      end
+
+      it 'release an instance of bike that is working' do
+        ds.bike_rack = [bike]
+        expect(bike).to be_instance_of(Bike)
+        expect(bike).to be_working
+      end
     end
 
-    it 'release and instance of bike that is working' do
-      bike = ds.release_bike
-      expect(bike).to be_instance_of(Bike)
-      expect(bike).to be_working
+    context 'when docking station has no bikes' do
+      it 'has no bikes to release' do
+        expect { ds.release_bike }.to raise_error(RuntimeError, 'There are no bikes to release!')
+      end
     end
   end
 
