@@ -1,10 +1,11 @@
 require 'docking_station'
 
 describe DockingStation do
-  let(:ds) { DockingStation.new }
+  let(:ds)   { DockingStation.new }
+  let(:bike) { Bike.new }
   
   describe '#release_bike' do
-    let(:bike) { Bike.new }
+    #let(:bike) { Bike.new }
 
     context 'when working bikes are available' do
       it 'releases a bike' do
@@ -19,28 +20,35 @@ describe DockingStation do
     end
 
     context 'when docking station has no bikes' do
-      it 'has no bikes to release' do
+      it 'raises error' do
         expect { ds.release_bike }.to raise_error(RuntimeError, 'There are no bikes to release!')
       end
     end
   end
 
   describe '#dock_bike' do
-    let(:bike) { Bike.new }
+    #let(:bike) { Bike.new }
 
-    it 'can dock a bike in the docking station' do
-      ds.dock_bike(bike)
-      expect(ds.bike_rack).to eq([bike])
+    context 'when docking station has space for bikes' do
+      it 'can dock a bike in the docking station' do
+        ds.dock_bike(bike)
+        expect(ds.bike_rack).to eq([bike])
+      end
+    end
+
+    context 'when docking station is full' do
+     it 'raises error' do
+       ds.bike_rack = [bike]
+       bike2 = Bike.new
+       expect { ds.dock_bike(bike2) }.to raise_error(RuntimeError, 'This docking station is full!')
+     end
     end
   end
 
   describe '#view_bikes' do
-    bike1, bike2 = Bike.new, Bike.new
-
     it 'shows available bikes' do
-      ds.dock_bike(bike1)
-      ds.dock_bike(bike2)
-      expect(ds.view_bikes).to eq([bike1, bike2])
+      ds.dock_bike(bike)
+      expect(ds.view_bikes).to eq([bike])
     end
   end
 end

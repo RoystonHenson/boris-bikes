@@ -13,6 +13,7 @@ class DockingStation
   end
 
   def dock_bike(bike)
+    raise 'This docking station is full!' if bike_rack.size == 1
     @bike_rack << bike
   end
 
