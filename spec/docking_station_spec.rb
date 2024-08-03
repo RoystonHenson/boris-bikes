@@ -18,9 +18,19 @@ describe DockingStation do
   describe '#dock_bike' do
     let(:bike) { Bike.new }
 
-    it 'docks a bike' do
+    it 'can dock a bike in the docking station' do
       ds.dock_bike(bike)
-      expect(ds.bikes).to eq([bike])
+      expect(ds.bike_rack).to eq([bike])
+    end
+  end
+
+  describe '#view_bikes' do
+    bike1, bike2 = Bike.new, Bike.new
+
+    it 'shows available bikes' do
+      ds.dock_bike(bike1)
+      ds.dock_bike(bike2)
+      expect(ds.view_bikes).to eq([bike1, bike2])
     end
   end
 end
