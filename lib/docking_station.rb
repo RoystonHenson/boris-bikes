@@ -12,8 +12,13 @@ class DockingStation
   end
   
   def release_bike
-    raise 'There are no bikes to release!' if empty?
-    bike_rack.shift
+    if empty?
+      raise 'There are no bikes to release!'
+    elsif no_working_bikes?
+      raise 'There are no working bikes to release!'
+    else
+      bike_rack.delete_at(bike_rack.index { |bike| bike.working == true })
+    end
   end
 
   def dock_bike(bike)
@@ -33,5 +38,9 @@ class DockingStation
 
   def empty?
     bike_rack.empty?
+  end
+
+  def no_working_bikes?
+    !bike_rack.any? { |bike| bike.working == true }
   end
 end

@@ -20,28 +20,40 @@ describe DockingStation do
   end
 
   describe '#release_bike' do
-    context 'when working bikes are available' do
-      it 'releases a bike' do
-        expect(ds).to respond_to(:release_bike)
-      end
-
-      it 'release an instance of bike that is working' do
-        ds.bike_rack = [bike]
-        expect(bike).to be_instance_of(Bike)
-        expect(bike).to be_working
-      end
-    end
-
     context 'when docking station has no bikes' do
       it 'raises error' do
         expect { ds.release_bike }.to raise_error(RuntimeError, 'There are no bikes to release!')
+      end
+    end
+
+    context 'when docking station has working bikes' do
+      it 'release a working bike' do
+        bike2 = Bike.new
+        bike.broken
+        ds.bike_rack = [bike, bike2]
+        expect(ds.release_bike).to eq(bike2)
+        expect(ds.bike_rack).to eq([bike])
+      end
+    end
+
+    context 'when docking station has bikes that aren\'t working' do
+      it 'raises error' do
+        bike.broken
+        ds.bike_rack = [bike]
+        expect { ds.release_bike }.to raise_error(RuntimeError, 'There are no working bikes to release!')
       end
     end
   end
 
   describe '#dock_bike' do
     context 'when docking station has space for bikes' do
-      it 'can dock a bike in the docking station' do
+      it 'can dock a working bike' do
+        ds.dock_bike(bike)
+        expect(ds.bike_rack).to eq([bike])
+      end
+
+      it 'can dock a broken bike' do
+        bike.broken
         ds.dock_bike(bike)
         expect(ds.bike_rack).to eq([bike])
       end
