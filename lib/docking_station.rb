@@ -3,7 +3,7 @@ require './lib/bike'
 class DockingStation
   attr_accessor :bike_rack
 
-  MAX_CAPACITY = 1
+  MAX_CAPACITY = 20
 
   def initialize
     @bike_rack = []

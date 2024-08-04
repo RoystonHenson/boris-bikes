@@ -5,8 +5,6 @@ describe DockingStation do
   let(:bike) { Bike.new }
   
   describe '#release_bike' do
-    #let(:bike) { Bike.new }
-
     context 'when working bikes are available' do
       it 'releases a bike' do
         expect(ds).to respond_to(:release_bike)
@@ -27,8 +25,6 @@ describe DockingStation do
   end
 
   describe '#dock_bike' do
-    #let(:bike) { Bike.new }
-
     context 'when docking station has space for bikes' do
       it 'can dock a bike in the docking station' do
         ds.dock_bike(bike)
@@ -37,10 +33,9 @@ describe DockingStation do
     end
 
     context 'when docking station is full' do
-     it 'raises error' do
-       ds.bike_rack = [bike]
-       bike2 = Bike.new
-       expect { ds.dock_bike(bike2) }.to raise_error(RuntimeError, 'This docking station is full!')
+      it 'raises error' do
+        20.times { ds.dock_bike(Bike.new) }
+        expect { ds.dock_bike(bike) }.to raise_error(RuntimeError, 'This docking station is full!')
      end
     end
   end
