@@ -1,12 +1,14 @@
 require './lib/bike'
 
 class DockingStation
+  attr_reader :capacity
   attr_accessor :bike_rack
 
   MAX_CAPACITY = 20
 
-  def initialize
+  def initialize(capacity=MAX_CAPACITY)
     @bike_rack = []
+    @capacity = capacity
   end
   
   def release_bike
@@ -26,7 +28,7 @@ class DockingStation
   private
 
   def full?
-    bike_rack.size == MAX_CAPACITY
+    bike_rack.size >= capacity
   end
 
   def empty?

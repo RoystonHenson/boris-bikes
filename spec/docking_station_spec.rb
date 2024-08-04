@@ -4,6 +4,21 @@ describe DockingStation do
   let(:ds)   { DockingStation.new }
   let(:bike) { Bike.new }
   
+  describe '#initialize' do
+    context 'when user does not specify default capacity' do
+      it 'has a capacity of 20' do
+        expect(ds.capacity).to eq(20)
+      end
+    end
+
+    context 'when user specifies default capacity' do
+      it 'has the capacity entered by the user' do
+        ds = DockingStation.new(50)
+        expect(ds.capacity).to eq(50)
+      end
+    end
+  end
+
   describe '#release_bike' do
     context 'when working bikes are available' do
       it 'releases a bike' do
