@@ -2,7 +2,6 @@ require 'docking_station'
 
 describe DockingStation do
   let(:ds)   { DockingStation.new }
-  let(:bike) { Bike.new }
   
   describe '#initialize' do
     context 'when user does not specify default capacity' do
@@ -27,9 +26,9 @@ describe DockingStation do
     end
 
     context 'when docking station has working bikes' do
-      it 'release a working bike' do
-        bike2 = Bike.new
-        bike.broken
+      it 'releases a working bike' do
+        bike = double('bike1', :working => false)
+        bike2 = double('bike2', :working => true)
         ds.bike_rack = [bike, bike2]
         expect(ds.release_bike).to eq(bike2)
         expect(ds.bike_rack).to eq([bike])
@@ -38,7 +37,7 @@ describe DockingStation do
 
     context 'when docking station has bikes that aren\'t working' do
       it 'raises error' do
-        bike.broken
+        bike = double('bike', :working => false)
         ds.bike_rack = [bike]
         expect { ds.release_bike }.to raise_error(RuntimeError, 'There are no working bikes to release!')
       end
@@ -48,12 +47,13 @@ describe DockingStation do
   describe '#dock_bike' do
     context 'when docking station has space for bikes' do
       it 'can dock a working bike' do
+        bike = double('bike', :working => true)
         ds.dock_bike(bike)
         expect(ds.bike_rack).to eq([bike])
       end
 
       it 'can dock a broken bike' do
-        bike.broken
+        bike = double('bike', :working => false)
         ds.dock_bike(bike)
         expect(ds.bike_rack).to eq([bike])
       end
@@ -61,7 +61,8 @@ describe DockingStation do
 
     context 'when docking station is full' do
       it 'raises error' do
-        20.times { ds.dock_bike(Bike.new) }
+        20.times { ds.dock_bike(double('bike')) }
+        bike = double('bike')
         expect { ds.dock_bike(bike) }.to raise_error(RuntimeError, 'This docking station is full!')
      end
     end
@@ -69,6 +70,7 @@ describe DockingStation do
 
   describe '#view_bikes' do
     it 'shows available bikes' do
+      bike = double('bike')
       ds.dock_bike(bike)
       expect(ds.view_bikes).to eq([bike])
     end
