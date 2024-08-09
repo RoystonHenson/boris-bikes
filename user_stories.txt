@@ -40,4 +40,20 @@ I'd like docking stations not to release broken bikes.
 
 As a maintainer of the system,
 So that I can manage broken bikes and not disappoint users,
-I'd like docking stations to accept returning bikes (broken or not).
+I'd like docking stations to accept returning bikes (broken or not)
+
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I’d like vans to collect broken bikes from docking stations
+
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I’d like vans to deliver broken bikes to garages for repair.
+
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I’d like vans to collect working bikes from garages.
+
+As a maintainer of the system,
+So that I can manage broken bikes and not disappoint users,
+I’d like vans to deliver fixed bikes to docking stations for customer use.
