@@ -4,7 +4,7 @@ describe Bike do
   let(:bike) { Bike.new }
   
   describe '#initialize' do
-    it 'bike is working when new' do
+    it  'is working when new' do
       expect(bike.working).to eq(true)
     end
   end

@@ -1,7 +1,7 @@
 require 'docking_station'
 
 describe DockingStation do
-  let(:ds)   { DockingStation.new }
+  let(:ds) { DockingStation.new }
   
   describe '#initialize' do
     context 'when user does not specify default capacity' do
