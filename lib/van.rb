@@ -1,4 +1,5 @@
 require './lib/docking_station'
+require './lib/garage'
 
 class Van
   attr_accessor :storage
@@ -8,11 +9,9 @@ class Van
   end
 
   def load_bikes(array)
-    # move bikes to the van storage first
     array.select { |bike| 
                    storage << bike if bike.working == false
                  }
-    # after all bikes have been moved, set the array to only hold the values that should still be there ('select!'?)
     array.select! { |bike| bike.working == true }
   end
 

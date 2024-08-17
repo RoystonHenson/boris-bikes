@@ -1,7 +1,11 @@
 class Garage
-  attr_reader :storage
-  
+  attr_accessor :storage
+
   def initialize
     @storage = []
+  end
+
+  def repair_all
+    storage.map { |bike| bike.working = true }
   end
 end

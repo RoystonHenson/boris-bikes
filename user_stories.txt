@@ -51,6 +51,10 @@ So that I can manage broken bikes and not disappoint users,
 I’d like vans to deliver broken bikes to garages for repair.
 
 As a maintainer of the system,
+So that I can provide more working bikes for users,
+I'd like the garage to repair broken bikes.
+
+As a maintainer of the system,
 So that I can manage broken bikes and not disappoint users,
 I’d like vans to collect working bikes from garages.
 
