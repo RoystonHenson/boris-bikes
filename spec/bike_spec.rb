@@ -19,7 +19,7 @@ describe Bike do
   describe '#working?' do
     context 'when bike is working' do
       it 'user can see the bike is working' do
-        expect(bike.working).to eq(true)
+        expect(bike.working?).to eq(true)
       end
     end
 
