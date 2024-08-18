@@ -8,11 +8,22 @@ class Van
     @storage = []
   end
 
-  def load_bikes(array)
-    array.select { |bike| 
-                   storage << bike if bike.working == false
-                 }
-    array.select! { |bike| bike.working == true }
+  def load_from(array, goods_condition='all')
+    case goods_condition
+    when 'working'
+      array.select { |bike|
+                     storage << bike if bike.working == true
+                   }
+      array.select! { |bike| bike.working == false }
+    when 'broken'
+      array.select { |bike| 
+                     storage << bike if bike.working == false
+                   }
+      array.select! { |bike| bike.working == true }
+    when 'all'
+      array.each { |bike| storage << bike }
+      array.clear
+    end
   end
 
   def unload_bikes(array)
