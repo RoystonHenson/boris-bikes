@@ -13,46 +13,61 @@ describe Van do
     end
   end
 
-  describe '#load' do
+  describe '#load_from' do
+    let(:pickup_location_storage) { [goods1, goods2, goods3, goods4] }
+
     context 'when picking up working goods' do
-      it 'loads only working goods into it\'s storage' do
-        # swap to before each?
-        goods_storage = [goods1, goods2, goods3, goods4]
-        van.load_from(goods_storage, 'working')
+      it 'loads only working goods' do
+        van.load_from(pickup_location_storage, 'working')
         expect(van.storage).to eq([goods2])
-        expect(goods_storage).to eq([goods1, goods3, goods4])
+        expect(pickup_location_storage).to eq([goods1, goods3, goods4])
       end
     end
 
     context 'when picking up broken goods' do
-      it 'loads only broken goods into it\'s storage' do
-        goods_storage = [goods1, goods2, goods3, goods4]
-        van.load_from(goods_storage, 'broken')
+      it 'loads only broken goods' do
+        van.load_from(pickup_location_storage, 'broken')
         expect(van.storage).to eq([goods1, goods3, goods4])
-        expect(goods_storage).to eq([goods2])
+        expect(pickup_location_storage).to eq([goods2])
       end
     end
 
     context 'when not specifying state of goods' do
-      it 'loads all goods into it\'s storage' do
-        goods_storage = [goods1, goods2, goods3, goods4]
-        van.load_from(goods_storage)
-        p goods_storage
-        p van.storage
-        expect(goods_storage).to eq([])
+      it 'loads goods regardless of working condition' do
+        van.load_from(pickup_location_storage)
+        expect(pickup_location_storage).to eq([])
         expect(van.storage).to eq([goods1, goods2, goods3, goods4])
       end
     end
   end
 
-  describe 'unload_bikes' do
-    context 'when delivering broken bikes' do
-      it 'offloads only broken bikes from its storage' do
-        garage = double('garage', :storage => [])
+  describe '#unload_to' do 
+    let(:delivery_location_storage) { [] }
+    
+    context 'when delivering working goods' do
+      it 'offloads only working goods' do
+        van.storage = [goods1, goods2, goods3, goods4] 
+        van.unload_to(delivery_location_storage, 'working')
+        expect(delivery_location_storage).to eq([goods2])
+        expect(van.storage).to eq([goods1, goods3, goods4])
+      end
+    end
+
+    context 'when delivering broken goods' do
+      it 'offloads only broken goods' do
         van.storage = [goods1, goods2, goods3, goods4]
-        van.unload_bikes(garage.storage)
+        van.unload_to(delivery_location_storage, 'broken')
         expect(van.storage).to eq([goods2])
-        expect(garage.storage).to eq([goods1, goods3, goods4])
+        expect(delivery_location_storage).to eq([goods1, goods3, goods4])
+      end
+    end
+
+    context 'when delivering goods regardless of working condition' do
+      it 'offloads goods regardless of working condition' do
+        van.storage = [goods1, goods2, goods3, goods4] 
+        van.unload_to(delivery_location_storage)
+        expect(van.storage).to eq([])
+        expect(delivery_location_storage).to eq([goods1, goods2, goods3, goods4])
       end
     end
   end

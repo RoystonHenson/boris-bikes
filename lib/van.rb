@@ -11,25 +11,36 @@ class Van
   def load_from(array, goods_condition='all')
     case goods_condition
     when 'working'
-      array.select { |bike|
-                     storage << bike if bike.working == true
+      array.select { |goods| 
+                     storage << goods if goods.working == true
                    }
-      array.select! { |bike| bike.working == false }
+      array.select! { |goods| goods.working == false }
     when 'broken'
-      array.select { |bike| 
-                     storage << bike if bike.working == false
+      array.select { |goods| 
+                     storage << goods if goods.working == false
                    }
-      array.select! { |bike| bike.working == true }
+      array.select! { |goods| goods.working == true }
     when 'all'
-      array.each { |bike| storage << bike }
+      array.each { |goods| storage << goods }
       array.clear
     end
   end
 
-  def unload_bikes(array)
-    storage.select { |bike| 
-                    array << bike if bike.working == false
+  def unload_to(array, goods_condition='all')
+    case goods_condition
+    when 'working'
+      storage.select { |goods|
+                       array << goods if goods.working == true
+                     }
+      storage.select! { |goods| goods.working == false }
+    when 'broken'
+      storage.select { |goods| 
+                    array << goods if goods.working == false
                    }
-    storage.select! { |bike| bike.working == true }
+      storage.select! { |goods| goods.working == true }
+    when 'all'
+      storage.each { |goods| array << goods }
+      storage.clear 
+    end
   end
 end
