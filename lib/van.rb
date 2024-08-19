@@ -10,37 +10,31 @@ class Van
 
   def load_from(array, goods_condition='all')
     case goods_condition
-    when 'working'
-      array.select { |goods| 
-                     storage << goods if goods.working == true
-                   }
-      array.select! { |goods| goods.working == false }
-    when 'broken'
-      array.select { |goods| 
-                     storage << goods if goods.working == false
-                   }
-      array.select! { |goods| goods.working == true }
-    when 'all'
-      array.each { |goods| storage << goods }
-      array.clear
+    when 'working' then transfer_working_goods(array, storage, true)
+    when 'broken'  then transfer_working_goods(array, storage, false)
+    when 'all' then transfer_all_goods(array, storage)
     end
   end
 
   def unload_to(array, goods_condition='all')
     case goods_condition
-    when 'working'
-      storage.select { |goods|
-                       array << goods if goods.working == true
-                     }
-      storage.select! { |goods| goods.working == false }
-    when 'broken'
-      storage.select { |goods| 
-                    array << goods if goods.working == false
-                   }
-      storage.select! { |goods| goods.working == true }
-    when 'all'
-      storage.each { |goods| array << goods }
-      storage.clear 
+    when 'working' then transfer_working_goods(storage, array, true)
+    when 'broken' then transfer_working_goods(storage, array, false)
+    when 'all' then transfer_all_goods(storage, array)
     end
+  end
+
+  private
+
+  def transfer_working_goods(from_array, to_array, goods_condition)
+    from_array.select { |goods|
+                      to_array << goods if goods.working == goods_condition  
+                      }
+    from_array.select! { |goods| goods.working == !goods_condition}
+  end
+
+  def transfer_all_goods(from_array, to_array)
+    from_array.each { |goods| to_array << goods}
+    from_array.clear
   end
 end
