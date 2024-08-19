@@ -4,18 +4,16 @@ class DockingStation
   attr_reader :capacity
   attr_accessor :bike_rack
 
-  MAX_CAPACITY = 20
+  CAPACITY = 20
 
-  def initialize(capacity=MAX_CAPACITY)
+  def initialize(capacity=CAPACITY)
     @bike_rack = []
     @capacity = capacity
   end
   
   def release_bike
-    if empty?
-      raise 'There are no bikes to release!'
-    elsif no_working_bikes?
-      raise 'There are no working bikes to release!'
+    if empty? || no_working_bikes?
+      raise 'There are no bikes available to release!'
     else
       bike_rack.delete_at(bike_rack.index { |bike| bike.working == true })
     end

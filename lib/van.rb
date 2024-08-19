@@ -18,7 +18,7 @@ class Van
 
   def unload_to(array, goods_condition='all')
     case goods_condition
-    when 'working' then transfer_working_goods(storage, array, true)
+    when 'working' then transfer_working_goods(storage, array, true)  
     when 'broken' then transfer_working_goods(storage, array, false)
     when 'all' then transfer_all_goods(storage, array)
     end
