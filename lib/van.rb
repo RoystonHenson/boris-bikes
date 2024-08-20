@@ -9,22 +9,22 @@ class Van
   end
 
   def load_from(array, goods_condition='all')
-    case goods_condition
-    when 'working' then transfer_working_goods(array, storage, true)
-    when 'broken'  then transfer_working_goods(array, storage, false)
-    when 'all' then transfer_all_goods(array, storage)
-    end
+    select_goods_by_condition(array, storage, goods_condition)
   end
 
   def unload_to(array, goods_condition='all')
-    case goods_condition
-    when 'working' then transfer_working_goods(storage, array, true)  
-    when 'broken' then transfer_working_goods(storage, array, false)
-    when 'all' then transfer_all_goods(storage, array)
-    end
+    select_goods_by_condition(storage, array, goods_condition)
   end
 
   private
+
+  def select_goods_by_condition(from_array, to_array, goods_condition='all')
+    case goods_condition
+    when 'working' then transfer_working_goods(from_array, to_array, true)
+    when 'broken' then transfer_working_goods(from_array, to_array, false)
+    when 'all' then transfer_all_goods(from_array, to_array)
+    end
+  end
 
   def transfer_working_goods(from_array, to_array, goods_condition)
     from_array.select { |goods|
