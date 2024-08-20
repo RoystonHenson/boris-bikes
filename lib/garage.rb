@@ -6,6 +6,6 @@ class Garage
   end
 
   def repair_all
-    storage.map { |bike| bike.working = true }
+    storage.map { |vehicles| vehicles.working = true }
   end
 end
