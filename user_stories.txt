@@ -1,63 +1,71 @@
-As a person,
-So that I can use a bike,
-I'd like to get a bike from a docking station.
+DockingStation
 
-As a person,
-So that I can use a good bike,
-I'd like to see if a bike is working.
+  As a bike rental customer,
+  So that I can use a bike,
+  I'd like to get a bike from a docking station.
 
-As a member of the public,
-So I can return bikes I've hired,
-I want to dock my bike at the docking station.
+  As a bike rental customer,
+  So I can return bikes I've hired,
+  I want to dock my bike at the docking station.
 
-As a member of the public,
-So I can decide whether to use the docking station,
-I want to see a bike that has been docked.
+  As a bike rental customer,
+  So I can decide whether to use the docking station,
+  I want to see a bike that has been docked.
 
-As a member of the public,
-So that I am not confused and charged unnecessarily,
-I'd like docking stations not to release bikes when there are none available.
+  As a maintainer of the system,
+  So that customers are not confused and charged unnecessarily,
+  I'd like docking stations not to release bikes when there are none available.
 
-As a maintainer of the system,
-So that I can control the distribution of bikes,
-I'd like docking stations not to accept more bikes than their capacity.
+  As a maintainer of the system,
+  So that I can control the distribution of bikes,
+  I'd like docking stations not to accept more bikes than their capacity.
 
-As a system maintainer,
-So that I can plan the distribution of bikes,
-I want a docking station to have a default capacity of 20 bikes.
+  As a maintainer of the system,
+  So that I can plan the distribution of bikes,
+  I want a docking station to have a default capacity of 20 bikes.
 
-As a system maintainer,
-So that busy areas can be served more effectively,
-I want to be able to specify a larger capacity when necessary.
+  As a maintainer of the system,
+  So that busy areas can be served more effectively,
+  I want to be able to specify a larger capacity when necessary.
 
-As a member of the public,
-So that I reduce the chance of getting a broken bike in future,
-I'd like to report a bike as broken when I return it.
+  As a maintainer of the system,
+  So that I can manage broken bikes and not disappoint users,
+  I'd like docking stations not to release broken bikes.
 
-As a maintainer of the system,
-So that I can manage broken bikes and not disappoint users,
-I'd like docking stations not to release broken bikes.
+  As a maintainer of the system,
+  So that I can manage broken bikes and not disappoint users,
+  I'd like docking stations to accept returning bikes (broken or not).
 
-As a maintainer of the system,
-So that I can manage broken bikes and not disappoint users,
-I'd like docking stations to accept returning bikes (broken or not)
+Bike
 
-As a maintainer of the system,
-So that I can manage broken bikes and not disappoint users,
-I’d like vans to collect broken bikes from docking stations
+  As a person,
+  So that I can use a good bike,
+  I'd like to see if a bike is working.
 
-As a maintainer of the system,
-So that I can manage broken bikes and not disappoint users,
-I’d like vans to deliver broken bikes to garages for repair.
+  As a member of the public,
+  So that I reduce the chance of getting a broken bike in future,
+  I'd like to report a bike as broken when I return it.
 
-As a maintainer of the system,
-So that I can provide more working bikes for users,
-I'd like the garage to repair broken bikes.
+Van
 
-As a maintainer of the system,
-So that I can manage broken bikes and not disappoint users,
-I’d like vans to collect working bikes from garages.
+  As a maintainer of the system,
+  So that I can manage broken bikes and not disappoint users,
+  I’d like vans to collect broken bikes from docking stations
 
-As a maintainer of the system,
-So that I can manage broken bikes and not disappoint users,
-I’d like vans to deliver fixed bikes to docking stations for customer use.
+  As a maintainer of the system,
+  So that I can manage broken bikes and not disappoint users,
+  I’d like vans to deliver broken bikes to garages for repair.
+
+  As a maintainer of the system, 
+  So that I can manage broken bikes and not disappoint users,
+  I’d like vans to collect working bikes from garages.
+
+  As a maintainer of the system,
+  So that I can manage broken bikes and not disappoint users,
+  I’d like vans to deliver fixed bikes to docking stations for customer use.
+
+Garage
+
+  As a maintainer of the system,
+  So that I can provide more working bikes for users,
+  I’d like the garage to repair broken bikes.
