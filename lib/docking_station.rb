@@ -12,15 +12,16 @@ class DockingStation
   end
   
   def release_bike
-    if empty? || no_working_bikes?
-      raise 'There are no bikes available to release!'
-    else
+    error_if_no_bikes
+    #if empty? || no_working_bikes?
+      #raise 'There are no bikes available to release!'
+    #else
       bike_rack.delete_at(bike_rack.index { |bike| bike.working == true })
-    end
+    #end
   end
 
   def dock_bike(bike)
-    raise 'This docking station is full!' if full?
+    error_if_full
     bike_rack << bike
   end
 
@@ -30,14 +31,18 @@ class DockingStation
 
   private
 
-  def full?
-    bike_rack.size >= capacity
+  def error_if_full
+    raise 'This docking station is full!' if bike_rack.size >= capacity
   end
 
   def empty?
     bike_rack.empty?
   end
 
+  def error_if_no_bikes
+    raise 'There are no bikes available to release!' if empty? || no_working_bikes?
+  end
+  
   def no_working_bikes?
     !bike_rack.any? { |bike| bike.working == true }
   end
