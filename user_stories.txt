@@ -72,6 +72,14 @@ Van
   So that I can manage broken bikes and not disappoint users,
   I’d like vans to deliver fixed bikes to docking stations for customer use.
 
+  As a maintainer of the system,
+  So I can control logistics,
+  I’d like vans to have a storage capacity.
+
+  As a maintainer of the system,
+  So I don’t try to overload the van,
+  I’d like to be told when the van has no more storage space.
+
 Garage
 
   As a maintainer of the system,
