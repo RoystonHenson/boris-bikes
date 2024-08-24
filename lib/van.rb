@@ -33,6 +33,7 @@ class Van
 
   def transfer_working_goods(from_array, to_array, goods_condition)
     while from_array.select { |goods| goods.working == goods_condition }.count > 0
+      break if storage.size == capacity
       index = from_array.index(from_array.select { |goods| goods.working == goods_condition }.first)
       to_array << from_array[index]
       from_array.delete_at(index)
