@@ -60,6 +60,11 @@ describe DockingStation do
         expect { ds.dock_bike(not_a_bike) }.to raise_error(RuntimeError, 'This docking station will only accept bikes!')
       end
 
+      it 'checks bike is not already docked' do
+        ds.dock_bike(bike1)
+        expect { ds.dock_bike(bike1) }.to raise_error(RuntimeError, 'This bike is already docked!')
+      end
+
       it 'can dock a working bike' do
         ds.dock_bike(bike2)
         expect(ds.bike_rack).to eq([bike2])

@@ -40,6 +40,10 @@ DockingStation
   To avoid confusing customers and keep the system flowing,
   I’d like docking stations to only dock bikes.
 
+  As a bike rental customer,
+  So the system will not get confused,
+  I’d like to be unable to dock a bike that is already docked.
+
 Bike
 
   As a person,
