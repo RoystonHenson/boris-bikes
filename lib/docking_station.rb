@@ -18,6 +18,7 @@ class DockingStation
 
   def dock_bike(bike)
     error_if_full
+    error_if_not_a_bike(bike)
     bike_rack << bike
   end
 
@@ -29,6 +30,10 @@ class DockingStation
 
   def error_if_full
     raise 'This docking station is full!' if bike_rack.size >= capacity
+  end
+
+  def error_if_not_a_bike(bike)
+    raise 'This docking station will only accept bikes!' if bike.class != Bike
   end
 
   def error_if_no_bikes

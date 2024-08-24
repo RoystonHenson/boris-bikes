@@ -4,6 +4,11 @@ describe DockingStation do
   let(:ds) { DockingStation.new }
   let(:bike1) { double('bike1', working: false) }
   let(:bike2) { double('bike2', working: true) }
+
+  before(:each) do
+    allow(bike1).to receive(:class).and_return(Bike)
+    allow(bike2).to receive(:class).and_return(Bike)
+  end
   
   describe '#initialize' do
     context 'when user does not specify default capacity' do
@@ -45,6 +50,16 @@ describe DockingStation do
 
   describe '#dock_bike' do
     context 'when docking station has space for bikes' do
+      it 'checks that the object being docked is a bike' do
+        ds.dock_bike(bike1)
+        expect(bike1.class).to eq(Bike)
+      end
+
+      it 'raises error if anything other than a bike is docked' do
+        not_a_bike = double('no a bike')
+        expect { ds.dock_bike(not_a_bike) }.to raise_error(RuntimeError, 'This docking station will only accept bikes!')
+      end
+
       it 'can dock a working bike' do
         ds.dock_bike(bike2)
         expect(ds.bike_rack).to eq([bike2])
@@ -58,7 +73,7 @@ describe DockingStation do
 
     context 'when docking station is full' do
       it 'raises error' do
-        20.times { ds.dock_bike(double('bike')) }
+        20.times { ds.dock_bike(Bike.new) }
         expect { ds.dock_bike(bike1) }.to raise_error(RuntimeError, 'This docking station is full!')
      end
     end

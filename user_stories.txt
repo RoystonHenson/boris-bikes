@@ -36,6 +36,10 @@ DockingStation
   So that I can manage broken bikes and not disappoint users,
   I'd like docking stations to accept returning bikes (broken or not).
 
+  As a maintainer of the system,
+  To avoid confusing customers and keep the system flowing,
+  I’d like docking stations to only dock bikes.
+
 Bike
 
   As a person,
