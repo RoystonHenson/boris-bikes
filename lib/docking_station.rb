@@ -11,9 +11,9 @@ class DockingStation
     @capacity = capacity
   end
   
-  def release_bike
+  def release_bike(number=bike_rack.index { |bike| bike.working == true })
     error_if_no_bikes
-    bike_rack.delete_at(bike_rack.index { |bike| bike.working == true })
+    bike_rack.delete_at(number)
   end
 
   def dock_bike(bike)

@@ -45,6 +45,12 @@ describe DockingStation do
         expect(ds.release_bike).to eq(bike2)
         expect(ds.bike_rack).to eq([bike1])
       end
+
+      it 'releases a specific working bike' do
+        bike3 = double('bike3', working: true)
+        ds.bike_rack = [bike1, bike2, bike3]
+        expect(ds.release_bike(2)).to eq(bike3)
+      end
     end
   end
 
