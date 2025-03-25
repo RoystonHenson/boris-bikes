@@ -62,8 +62,8 @@ describe DockingStation do
       end
 
       it 'raises error if anything other than a bike is docked' do
-        not_a_bike = double('no a bike')
-        expect { ds.dock_bike(not_a_bike) }.to raise_error(RuntimeError, 'This docking station will only accept bikes!')
+        not_a_bike_object = double('not a bike object')
+        expect { ds.dock_bike(not_a_bike_object) }.to raise_error(RuntimeError, 'This docking station will only accept bikes!')
       end
 
       it 'checks bike is not already docked' do
