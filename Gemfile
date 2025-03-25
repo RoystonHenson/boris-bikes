@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-ruby '3.0.0'
+source 'https://rubygems.org'
 
-gem 'rspec'
+ruby '3.4.2'
+
+gem 'rspec', '~> 3.13'
