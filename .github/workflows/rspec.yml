@@ -11,7 +11,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0 # Adjust based on your project
+          ruby-version: 3.4.2 
           bundler-cache: true
       - name: Run Tests and Generate Coverage
         run: |
