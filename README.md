@@ -1,1 +1,1 @@
-# Boris Bikes
+# Boris Bikes[![Coverage Status](https://coveralls.io/repos/github/RoystonHenson/boris-bikes/badge.svg?branch=main)](https://coveralls.io/github/RoystonHenson/boris-bikes?branch=main)
